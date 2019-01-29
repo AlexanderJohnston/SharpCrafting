@@ -65,7 +65,7 @@ namespace SharpCrafting
                            .Crash($"Fatal exception in the common platform at runtime{Environment.NewLine}{t.Exception?.ToString()}");
                     else
                         _log
-                           .Information("Successfully launched the common platform from the bluetooth runtime.");
+                           .Information("Successfully launched the common platform from the runtime.");
                 });
                 returned.Wait();
 
@@ -87,7 +87,7 @@ namespace SharpCrafting
             }
             catch (Exception ex)
             {
-                _log.Fatal($"Could not freeze and launch the common platform from the bluetooth runtime." +
+                _log.Fatal($"Could not freeze and launch the common platform from the runtime." +
                              $"{Environment.NewLine}{ex}");
                 Platform.Crash("Unknown failure occurred in an EntryPointAttribute for the runtime.");
             }
