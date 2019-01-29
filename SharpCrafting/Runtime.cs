@@ -75,7 +75,7 @@ namespace SharpCrafting
             catch (ObjectReadOnlyException roEx)
             {
                 _log.Fatal($"Property or state were attempted on a frozen object." +
-                             $"${Environment.NewLine}BluetoothRuntime Freeze(): {roEx.Data}");
+                             $"${Environment.NewLine}Runtime Freeze(): {roEx.Data}");
                 Platform.Crash("Fatal attempt to modify a frozen object.");
             }
             catch (ThreadMismatchException threadEx)
@@ -89,7 +89,7 @@ namespace SharpCrafting
             {
                 _log.Fatal($"Could not freeze and launch the common platform from the bluetooth runtime." +
                              $"{Environment.NewLine}{ex}");
-                Platform.Crash("Unknown failure occurred in an EntryPointAttribute for the bluetooth runtime.");
+                Platform.Crash("Unknown failure occurred in an EntryPointAttribute for the runtime.");
             }
         }
 
