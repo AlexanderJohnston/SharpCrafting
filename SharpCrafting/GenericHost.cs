@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting ;
 
 using PostSharp.Patterns.Threading ;
 
+using SharpCrafting.Aspects;
+
 using Serilog ;
 using Serilog.Events ;
 
