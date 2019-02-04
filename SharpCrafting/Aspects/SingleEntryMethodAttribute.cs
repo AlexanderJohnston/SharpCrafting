@@ -6,6 +6,7 @@ using PostSharp.Aspects ;
 
 namespace SharpCrafting.Aspects
 {
+    [PSerializable]
     public class SingleEntryMethodAttribute : MethodInterceptionAspect
     {
         ///     Starts at zero and determines number of accesses.
