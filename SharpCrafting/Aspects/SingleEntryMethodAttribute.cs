@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+using PostSharp.Serialization;
 using PostSharp.Aspects ;
 
 namespace SharpCrafting.Aspects
