@@ -19,6 +19,7 @@ namespace SharpCrafting
     [PrivateThreadAware]
     public class GenericHost
     {
+        [SingleEntryMethod]
         public async Task Start ( GenericPlatform platform, [ CanBeNull ] string[] args = null )
         {
             var builder = new HostBuilder ()
