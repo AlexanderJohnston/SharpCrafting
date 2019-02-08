@@ -1,7 +1,6 @@
 # SharpCrafting
 Exploring PostSharp AOP with .NET Core Generic Host.
-See the following article for more details:
-https://medium.com/dealeron-dev/automating-net-core-services-with-postsharp-and-aspect-oriented-code-a8a51d8d84ec
+See [my article on Medium](https://medium.com/dealeron-dev/automating-net-core-services-with-postsharp-and-aspect-oriented-code-a8a51d8d84ec) for a detailed explanation.
 
 # Requirements
 
