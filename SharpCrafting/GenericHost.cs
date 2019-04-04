@@ -11,28 +11,26 @@ using Microsoft.Extensions.Hosting ;
 
 using PostSharp.Patterns.Threading ;
 
-using SharpCrafting.Aspects;
-
 using Serilog ;
 using Serilog.Events ;
 
 namespace SharpCrafting
 {
-    [PrivateThreadAware]
+    [ PrivateThreadAware ]
     public class GenericHost
     {
-        [SingleEntryMethod]
         public async Task Start ( GenericPlatform platform, [ CanBeNull ] string[] args = null )
         {
             var builder = new HostBuilder ()
                          .ConfigureAppConfiguration ( configureDelegate: ( context, config ) =>
-                                                      {
-                                                          config.AddJsonFile ( "appsettings.json", optional: true ) ;
-                                                          config.AddEnvironmentVariables () ;
+                                                                         {
+                                                                             config.AddJsonFile ( "appsettings.json",
+                                                                                                  optional: true ) ;
+                                                                             config.AddEnvironmentVariables () ;
 
-                                                          if ( args != null )
-                                                              config.AddCommandLine ( args ) ;
-                                                      } )
+                                                                             if ( args != null )
+                                                                                 config.AddCommandLine ( args ) ;
+                                                                         } )
                          .ConfigureServices ( configureDelegate: ( context, services ) =>
                                                                  {
                                                                      services.AddOptions () ;
@@ -42,7 +40,10 @@ namespace SharpCrafting
                                                                      services.AddHostedService <TimingService> () ;
                                                                      services.Configure <AppConfig> ( options =>
                                                                                                       {
-                                                                                                          options.Platform = platform ;
+                                                                                                          options
+                                                                                                                 .Platform
+                                                                                                              =
+                                                                                                              platform ;
                                                                                                       } ) ;
                                                                  } ) ;
             await builder.RunConsoleAsync () ;
