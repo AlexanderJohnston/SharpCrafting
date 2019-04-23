@@ -22,7 +22,7 @@ namespace SharpCrafting
         static Runtime()
         {
             Platform       = new GenericPlatform();
-            Assembly       = GetAssembly(typeof(Runtime));
+            Assembly       = Assembly.GetExecutingAssembly();
             ApplicationUri = Path.GetDirectoryName(Assembly.Location);
         }
 
