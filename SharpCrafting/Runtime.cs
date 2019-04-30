@@ -37,7 +37,7 @@ namespace SharpCrafting
         [ NotNull, Child ]     private static readonly GenericPlatform Platform ;
 
         [ NotNull, Reference ] private static readonly LogSource
-            _logSource = LogSource.Get ().WithLevels ( LogLevel.Trace, LogLevel.Warning ) ;
+            _logSource = LogSource.Get ().WithLevels ( LogLevel.Debug, LogLevel.Warning ) ;
 
         [ NotNull, Reference ] private readonly LogSource _log = _logSource.ForCurrentType () ;
 

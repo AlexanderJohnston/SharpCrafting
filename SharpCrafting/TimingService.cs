@@ -22,7 +22,7 @@ namespace SharpCrafting
 
         [ Reference ] private readonly LogSource _log = LogSource
                                                        .Get ()
-                                                       .WithLevels ( PostSharp.Patterns.Diagnostics.LogLevel.Trace,
+                                                       .WithLevels ( PostSharp.Patterns.Diagnostics.LogLevel.Debug,
                                                                      PostSharp.Patterns.Diagnostics.LogLevel.Warning ) ;
 
         [ Child ]

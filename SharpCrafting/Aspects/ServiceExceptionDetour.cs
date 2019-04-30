@@ -2,6 +2,10 @@
 using System.Collections.Generic ;
 using System.Text ;
 
+using JetBrains.Annotations ;
+
+using Microsoft.ApplicationInsights ;
+
 using PostSharp.Aspects ;
 using PostSharp.Extensibility ;
 using PostSharp.Patterns.Diagnostics ;
@@ -21,7 +25,7 @@ namespace SharpCrafting.Aspects
     [ MulticastAttributeUsage ( Inheritance = MulticastInheritance.Strict ) ]
     class ServiceExceptionDetourAttribute : OnExceptionAspect
     {
-        private static LogSource _log = LogSource.Get ().WithLevels ( LogLevel.Trace, LogLevel.Warning ) ;
+        private static LogSource _log = LogSource.Get ().WithLevels ( LogLevel.Debug, LogLevel.Warning ) ;
 
         public override void OnException ( MethodExecutionArgs margs )
         {
@@ -35,8 +39,14 @@ namespace SharpCrafting.Aspects
             }
 
             var targetName = LimitNamespace ( margs.Exception.TargetSite.ToString () ) ;
-
-            _log.Error.Write ( Formatted ( "##[Exception Monitor]##: Swallowed an exception from {targetName} with: [{arguments}]{NewLine}{Message}",
+            var properties = new Dictionary <string, string>
+                             {
+                                 { "Target", margs.Exception.TargetSite.ToString () },
+                                 { "Args", arguments.ToString () },
+                                 { "Exception", margs.Exception.Message }
+                             } ;
+            MarkCustomEvent ( properties ) ;
+            _log.Error.Write ( Formatted ( "[Exception Monitor]: Swallowed an exception from {targetName} with: [{arguments}]{NewLine}{Message}",
                                            targetName,
                                            arguments,
                                            Environment.NewLine,
@@ -55,6 +65,22 @@ namespace SharpCrafting.Aspects
             sb.Append ( nameLink.Segments[length - 1] + "." ) ;
             sb.Append ( target ) ;
             return sb.ToString () ;
+        }
+
+        public void MarkCustomEvent ( Dictionary <string, string> properties )
+        {
+            try
+            {
+                var monitor = new Metrics.Monitor () ;
+                monitor.Telemetry.TrackEvent ( "Exception", properties ) ;
+                _log.Debug.Write ( Formatted ( "[Exception Monitor]: Successfully tracking custom events on Application Insights." ) ) ;
+            }
+            catch ( Exception ex )
+            {
+                _log.Error.Write ( Formatted ( "[Exception Monitor]: Failed to issue a custom event to Application Insights.{NewLine}{Message}",
+                                               Environment.NewLine,
+                                               ex.Message ) ) ;
+            }
         }
     }
 }

@@ -57,7 +57,7 @@ namespace SharpCrafting.Win32NT
             foreach (var generator in _generators)
             {
                 generator.Dispose();
-                _log.Trace.Write(Formatted("[Fault Generator]: Disposed of the fault generator after receiving reason: {reason}",
+                _log.Debug.Write(Formatted("[Fault Generator]: Disposed of the fault generator after receiving reason: {reason}",
                                            reason));
             }
         }
@@ -67,7 +67,7 @@ namespace SharpCrafting.Win32NT
         [ ServiceExceptionDetour ]
         private async Task CauseException ( string name )
         {
-            _log.Trace.Write ( Formatted ("[Fault Generator] : The current time is {UtcNow} on the [ {name} ] exception generator which is now firing.",
+            _log.Debug.Write ( Formatted ("[Fault Generator] : The current time is {UtcNow} on the [ {name} ] exception generator which is now firing.",
                                            DateTime.UtcNow, name ) ) ;
             switch (name)
             {
