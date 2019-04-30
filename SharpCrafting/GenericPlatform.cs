@@ -17,6 +17,8 @@ using PostSharp.Patterns.Threading;
 
 using Serilog;
 
+using Pure = PostSharp.Patterns.Model.PureAttribute;
+
 namespace SharpCrafting
 {
     [Freezable]
@@ -27,7 +29,7 @@ namespace SharpCrafting
         [Pure]
         private Assembly _caller() => Assembly.GetCallingAssembly();
 
-        [Pure]
+        [JetBrains.Annotations.Pure]
         private bool InvalidNamespace([Required] Assembly assembly, [Required] string @namespace) => 
             assembly.GetTypes().All(type => type.Namespace != @namespace) ;
 
@@ -35,7 +37,7 @@ namespace SharpCrafting
         public INativeClass GetNativeClass([Required] string @namespace, [Required] string className) => 
             this.Create(_caller(), @namespace, className) ;
 
-        [Pure]
+        [JetBrains.Annotations.Pure]
         private INativeClass Create([Required] Assembly assembly, [Required] string @namespace, [Required] string className)
         {
             if (this.InvalidNamespace(assembly, @namespace))

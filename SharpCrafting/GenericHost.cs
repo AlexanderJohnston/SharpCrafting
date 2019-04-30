@@ -40,10 +40,7 @@ namespace SharpCrafting
                                                                      services.AddHostedService <TimingService> () ;
                                                                      services.Configure <AppConfig> ( options =>
                                                                                                       {
-                                                                                                          options
-                                                                                                                 .Platform
-                                                                                                              =
-                                                                                                              platform ;
+                                                                                                          options.Platform = platform ;
                                                                                                       } ) ;
                                                                  } ) ;
             await builder.RunConsoleAsync () ;

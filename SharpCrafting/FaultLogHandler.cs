@@ -11,11 +11,13 @@ namespace SharpCrafting
     {
         public void OnInternalException ( LoggingExceptionInfo exceptionInfo )
         {
+            Console.WriteLine(exceptionInfo.Exception);
             throw new Exception("Internal logging exception.", exceptionInfo.Exception);
         }
 
         public void OnInvalidUserCode ( ref CallerInfo callerInfo, LoggingTypeSource source, string message, params object[] args )
         {
+            Console.WriteLine(string.Format(message, args));
             throw new InvalidOperationException(string.Format(message, args));
         }
 

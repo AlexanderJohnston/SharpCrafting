@@ -2,27 +2,32 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HouseofCat.Library.Gremlins" Version="1.0.0" />
     <PackageReference Include="Jetbrains.Annotations" Version="2019.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="2.1.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.2.0" />
     <PackageReference Include="Microsoft.extensions.options.configurationextensions" Version="2.2.0" />
-    <PackageReference Include="PostSharp" Version="6.1.16" />
-    <PackageReference Include="PostSharp.Patterns.Common" Version="6.1.16" />
-    <PackageReference Include="PostSharp.Patterns.Diagnostics" Version="6.1.16" />
-    <PackageReference Include="PostSharp.Patterns.Diagnostics.Serilog" Version="6.1.16" />
-    <PackageReference Include="PostSharp.Patterns.Threading" Version="6.1.16" />
+    <PackageReference Include="PostSharp" Version="6.1.17" />
+    <PackageReference Include="PostSharp.Patterns.Common" Version="6.1.17" />
+    <PackageReference Include="PostSharp.Patterns.Diagnostics" Version="6.1.17" />
+    <PackageReference Include="PostSharp.Patterns.Diagnostics.Serilog" Version="6.1.17" />
+    <PackageReference Include="Postsharp.Patterns.Model" Version="6.1.17" />
+    <PackageReference Include="PostSharp.Patterns.Threading" Version="6.1.17" />
     <PackageReference Include="Serilog.Enrichers.Thread" Version="3.0.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="4.0.0" />
+    <PackageReference Include="Totem" Version="1.0.0-beta.31" />
+    <PackageReference Include="Totem.Timeline" Version="1.0.0-beta.31" />
+    <PackageReference Include="Totem.Timeline.EventStore" Version="1.0.0-beta.31" />
   </ItemGroup>
 
 </Project>

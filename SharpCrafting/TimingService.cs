@@ -26,7 +26,7 @@ namespace SharpCrafting
                                                                      PostSharp.Patterns.Diagnostics.LogLevel.Warning ) ;
 
         [ Child ]
-        private INativeClass _nativeTimers { get ; set ; }
+        private INativeClass _faultGenerator { get ; set ; }
 
         public TimingService ( IOptions <AppConfig> options )
         {
@@ -36,16 +36,16 @@ namespace SharpCrafting
         [ Reentrant ]
         public async Task StartAsync ( CancellationToken cancellationToken )
         {
-            _log.Info.Write ( Formatted ( "[Timing Service]: Calling out to the platform for native timers." ) ) ;
-            _nativeTimers = ( INativeClass ) _platform.GetNativeClass ( "SharpCrafting", "NativeTimers" ) ;
-            await _nativeTimers.Initialize ( this ) ;
+            _log.Info.Write ( Formatted ( "[Fault Generator]: Calling out to the platform for a native exception generator." ) ) ;
+            _faultGenerator = ( INativeClass ) _platform.GetNativeClass ( "SharpCrafting", "FaultGenerator" ) ;
+            await _faultGenerator.Initialize ( this ) ;
         }
 
         [ Reentrant ]
         public async Task StopAsync ( CancellationToken cancellationToken )
         {
-            _log.Warning.Write ( Formatted ( "[Timing Service]: Terminating this service." ) ) ;
-            await _nativeTimers.Terminate ( "The timing service is being shut down by the host." ) ;
+            _log.Warning.Write ( Formatted ( "[Fault Generator]: Terminating this service." ) ) ;
+            await _faultGenerator.Terminate ( "The fault generator service is being shut down by the host." ) ;
         }
     }
 }

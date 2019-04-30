@@ -1,0 +1,8 @@
+﻿HouseOfCat
+GitHub: https://github.com/houseofcat/Library
+Site: https://houseofcat.io/
+Author: Tristan Hyams
+
+Totem
+GitHub: https://github.com/bwatts/Totem/tree/next
+Author: Bryan Watts

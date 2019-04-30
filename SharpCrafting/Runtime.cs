@@ -15,6 +15,8 @@ using PostSharp.Patterns.Threading ;
 using static PostSharp.Patterns.Diagnostics.FormattedMessageBuilder ;
 using static PostSharp.Patterns.Diagnostics.SemanticMessageBuilder ;
 
+using Pure = PostSharp.Patterns.Model.PureAttribute;
+
 using Serilog ;
 
 namespace SharpCrafting
@@ -24,14 +26,11 @@ namespace SharpCrafting
     {
         static Runtime ()
         {
-            Assembly       = GetAssembly ( typeof( Runtime ) ) ;
+            Assembly       = typeof( Runtime ).Assembly ;
             ApplicationUri = Path.GetDirectoryName ( Assembly.Location ) ;
             Platform = new GenericPlatform();
 
         }
-
-        [ Pure ]
-        public static Assembly GetAssembly <T> ( T type ) => type.GetType ().GetTypeInfo ().Assembly ;
 
         [ NotNull, Reference ] private static readonly Assembly        Assembly ;
         [ NotNull, Reference ] private static readonly string          ApplicationUri ;
