@@ -20,7 +20,7 @@ namespace SharpCrafting.Win32NT
     [PrivateThreadAware]
     class FaultGenerator : INativeClass
     {
-        [Reference]
+        [ Reference ]
         private readonly LogSource _log = LogSource.Get().WithLevels(LogLevel.Trace, LogLevel.Warning);
 
         private List<Timer> _generators { get; set; } = new List<Timer>();
@@ -34,12 +34,14 @@ namespace SharpCrafting.Win32NT
             if ( parentType == typeof( TimingService ) )
                 _parent = ( TimingService ) ( object ) parent ;
 
-            _generators = new List<Timer>() {
-                StartTimedGenerator(TimeSpan.FromSeconds(3), TimeSpan.FromSeconds(3), "system"),
-                StartTimedGenerator(TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5), "network"),
-                StartTimedGenerator(TimeSpan.FromSeconds(8), TimeSpan.FromSeconds(8), "sql"),
-                StartTimedGenerator(TimeSpan.FromSeconds(13), TimeSpan.FromSeconds(13), "random"),
-            };
+            _generators = new List <Timer> () ;
+            _generators.AddRange ( CreateGenerators ( 20 ) ) ;
+        }
+
+        private IEnumerable <Timer> CreateGenerators ( int number )
+        {
+            for ( var i = 0 ; i < number ; i ++ )
+                yield return StartTimedGenerator ( _parent.GetRandomTime ( 5000 ), _parent.GetRandomTime ( 300 ), "random" ) ;
         }
 
         private Timer StartTimedGenerator(TimeSpan delay, TimeSpan interval, string type)
@@ -51,7 +53,7 @@ namespace SharpCrafting.Win32NT
                                     TimeSpan.FromSeconds(interval.TotalSeconds));
         }
 
-        [SingleEntryMethod]
+        [ SingleEntryMethod ]
         public async Task Terminate ( string reason )
         {
             foreach (var generator in _generators)

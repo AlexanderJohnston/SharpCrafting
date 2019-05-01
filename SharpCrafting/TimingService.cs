@@ -1,4 +1,5 @@
-﻿using System.Threading ;
+﻿using System ;
+using System.Threading ;
 using System.Threading.Tasks ;
 
 using Microsoft.Extensions.Hosting ;
@@ -47,5 +48,13 @@ namespace SharpCrafting
             _log.Warning.Write ( Formatted ( "[Fault Generator]: Terminating this service." ) ) ;
             await _faultGenerator.Terminate ( "The fault generator service is being shut down by the host." ) ;
         }
+
+        /// <returns>TimeSpan from 150ms up to the specified max.</returns>
+        /// <remarks>Uses a hardcoded minimum of 150ms.</remarks>
+        internal TimeSpan GetRandomTime(int maxMilliseconds) => new TimeSpan(0, 0, 0, 0, new Random().Next(150, maxMilliseconds > 150 ? maxMilliseconds : 151));
+
+        /// <returns>TimeSpan from 150ms to 43.2 seconds.</returns>
+        /// <remarks>Uses a hardcoded minimum of 150ms.</remarks>
+        internal TimeSpan GetRandomTime() => new TimeSpan(0, 0, 0, 0, new Random().Next(150, 43200));
     }
 }

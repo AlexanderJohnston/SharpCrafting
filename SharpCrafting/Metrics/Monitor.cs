@@ -15,7 +15,7 @@ namespace SharpCrafting.Metrics
         {
             TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
             config.TelemetryChannel.DeveloperMode = true ;
-            //config.InstrumentationKey = "" ;
+            config.InstrumentationKey = "";
             Telemetry = new TelemetryClient(config);
         }
     }

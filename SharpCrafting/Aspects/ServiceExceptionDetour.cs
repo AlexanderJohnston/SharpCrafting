@@ -38,12 +38,13 @@ namespace SharpCrafting.Aspects
                     arguments.Append ( ',' ) ;
             }
 
-            var targetName = LimitNamespace ( margs.Exception.TargetSite.ToString () ) ;
+            string targetName = margs.Exception.TargetSite.ReflectedType.Name ;
             var properties = new Dictionary <string, string>
                              {
-                                 { "Target", margs.Exception.TargetSite.ToString () },
+                                 { "Target", targetName },
                                  { "Args", arguments.ToString () },
-                                 { "Exception", margs.Exception.Message }
+                                 { "Exception", margs.Exception.ToString () },
+                                 { "Message", margs.Exception.Message }
                              } ;
             MarkCustomEvent ( properties ) ;
             _log.Error.Write ( Formatted ( "[Exception Monitor]: Swallowed an exception from {targetName} with: [{arguments}]{NewLine}{Message}",
@@ -53,7 +54,7 @@ namespace SharpCrafting.Aspects
                                            margs.Exception.Message ) ) ;
         }
 
-        public string LimitNamespace ( string typeDeclaration )
+        public string ShortenNamespace ( string typeDeclaration )
         {
             var words    = typeDeclaration.Split ( ' ' ) ;
             var site     = words[0] ;
