@@ -10,6 +10,6 @@ See [my article on Medium](https://medium.com/dealeron-dev/automating-net-core-s
 
 # Goals
 
-* Demonstrate cross-platform .NET Core services which are threaded for a multi-core computer and wrapped with logging.
+* Demonstrate cross-platform .NET Core services which are threaded for a multi-core computer and wrapped with logging and real-time analytics for Exception Handling over Application Insights.
 * Create an example of utilizing PostSharp with the Generic Host in a console app.
 * Explore the benefits of Aspect Oriented Programming by masking the boundaries solved through use of PostSharp.
