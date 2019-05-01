@@ -42,7 +42,7 @@ namespace SharpCrafting
         [ NotNull, Reference ] private readonly LogSource _log = _logSource.ForCurrentType () ;
 
         [ NotNull, Reference ] private const string Template =
-            "{Timestamp:yyyy-MM-dd HH:mm:ss} |{Level:u3}: [{ThreadId}:{SourceContext}]{Indent:l} {Message:lj}{NewLine}{Exception}" ;
+            "{Timestamp:yyyy-MM-dd HH:mm:ss} |{Level:u3}: [{ThreadId}:{SourceContext}] {Message:lj}{NewLine}{Exception}" ;
 
         public void Entry ()
         {

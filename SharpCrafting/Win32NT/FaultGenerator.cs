@@ -12,6 +12,7 @@ using PostSharp.Patterns.Threading ;
 
 using Serilog ;
 using SharpCrafting.Aspects;
+using SharpCrafting.Win32NT.Utilities;
 using static PostSharp.Patterns.Diagnostics.FormattedMessageBuilder ;
 using static PostSharp.Patterns.Diagnostics.SemanticMessageBuilder ;
 
@@ -35,7 +36,7 @@ namespace SharpCrafting.Win32NT
                 _parent = ( TimingService ) ( object ) parent ;
 
             _generators = new List <Timer> () ;
-            _generators.AddRange ( CreateGenerators ( 20 ) ) ;
+            _generators.AddRange ( CreateGenerators ( 5 ) ) ;
         }
 
         private IEnumerable <Timer> CreateGenerators ( int number )
@@ -83,7 +84,7 @@ namespace SharpCrafting.Win32NT
                     await ExceptionGremlin.ThrowsSystemExceptionAsync();
                     break;
                 case "random":
-                    await ExceptionGremlin.ThrowsRandomExceptionAsync();
+                    await ExceptionThrower.ThrowsRandomSystemExceptionAsync();
                     break;
             }
         }
