@@ -4,9 +4,9 @@ See [my article on Medium](https://medium.com/dealeron-dev/automating-net-core-s
 
 # Requirements
 
-* [PostSharp Essentials](https://www.postsharp.net/essentials) or [Ultimate](https://www.postsharp.net/purchase).
-* Visual Studio 2017
-* .NET Core SDK 2.1 and C# 7.3
+* [PostSharp Essentials](https://www.postsharp.net/essentials) or [Ultimate](https://www.postsharp.net/purchase) version 6.1.18+
+* Visual Studio 2017 version 15.9.11+
+* .NET Core SDK 2.2.106+ and C# 7.3+
 
 # Goals
 
