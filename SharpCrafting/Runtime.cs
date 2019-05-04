@@ -72,7 +72,7 @@ namespace SharpCrafting
                                                                 else
                                                                     _log
                                                                        .Default
-                                                                       .Write ( Formatted ( "Successfully launched the common platform from the bluetooth runtime." ) ) ;
+                                                                       .Write ( Formatted ( "Successfully launched the common platform from the runtime." ) ) ;
                                                             } ) ;
                 returned.Wait () ;
 
@@ -82,7 +82,7 @@ namespace SharpCrafting
             catch ( ObjectReadOnlyException roEx )
             {
                 _log.Failure
-                    .Write ( Formatted ( ( "Property or state were attempted on a frozen object.{NewLine}BluetoothRuntime Freeze(): {Data}" ),
+                    .Write ( Formatted ( ( "Property or state were attempted on a frozen object.{NewLine}Runtime Freeze(): {Data}" ),
                                          Environment.NewLine, roEx.Data ) ) ;
                 Platform.Crash ( "Fatal attempt to modify a frozen object." ) ;
             }
@@ -96,9 +96,9 @@ namespace SharpCrafting
             catch ( Exception ex )
             {
                 _log.Failure
-                    .Write ( Formatted ( "Could not freeze and launch the common platform from the bluetooth runtime.{NewLine}{ex}",
+                    .Write ( Formatted ( "Could not freeze and launch the common platform from the runtime.{NewLine}{ex}",
                                          Environment.NewLine, ex ) ) ;
-                Platform.Crash ( "Unknown failure occurred in an EntryPointAttribute for the bluetooth runtime." ) ;
+                Platform.Crash ( "Unknown failure occurred in an EntryPointAttribute for the runtime." ) ;
             }
         }
 
