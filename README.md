@@ -2,6 +2,8 @@
 Exploring PostSharp AOP with .NET Core Generic Host.
 See [my article on Medium](https://medium.com/dealeron-dev/automating-net-core-services-with-postsharp-and-aspect-oriented-code-a8a51d8d84ec) for a detailed explanation.
 
+The "Semantic" branch is for an article on Exception Handling. It has a much better log handler implementation and a lot of small fixes to the general runtime to support this. An article will be linked here shortly to explain it.
+
 # Requirements
 
 * [PostSharp Essentials](https://www.postsharp.net/essentials) or [Ultimate](https://www.postsharp.net/purchase) version 6.1.18+
