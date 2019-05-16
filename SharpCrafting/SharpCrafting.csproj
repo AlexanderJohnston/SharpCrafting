@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,13 +18,13 @@
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="2.1.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.2.0" />
     <PackageReference Include="Microsoft.extensions.options.configurationextensions" Version="2.2.0" />
-    <PackageReference Include="PostSharp" Version="6.1.17" />
-    <PackageReference Include="PostSharp.Patterns.Common" Version="6.1.17" />
-    <PackageReference Include="PostSharp.Patterns.Diagnostics" Version="6.1.17" />
-    <PackageReference Include="PostSharp.Patterns.Diagnostics.Serilog" Version="6.1.17" />
-    <PackageReference Include="Postsharp.Patterns.Model" Version="6.1.17" />
-    <PackageReference Include="PostSharp.Patterns.Threading" Version="6.1.17" />
-    <PackageReference Include="Serilog.Enrichers.Thread" Version="3.0.0" />
+    <PackageReference Include="PostSharp" Version="6.1.18" />
+    <PackageReference Include="PostSharp.Patterns.Common" Version="6.1.18" />
+    <PackageReference Include="PostSharp.Patterns.Diagnostics" Version="6.1.18" />
+    <PackageReference Include="PostSharp.Patterns.Diagnostics.Serilog" Version="6.1.18" />
+    <PackageReference Include="Postsharp.Patterns.Model" Version="6.1.18" />
+    <PackageReference Include="PostSharp.Patterns.Threading" Version="6.1.18" />
+    <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="4.0.0" />
     <PackageReference Include="Totem" Version="1.0.0-beta.31" />

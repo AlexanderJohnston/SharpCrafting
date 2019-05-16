@@ -4,6 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using HouseofCat.Models;
 
+using System.Runtime.CompilerServices;
+
 namespace SharpCrafting.Win32NT.Utilities
 {
   static class ExceptionThrower
@@ -45,5 +47,41 @@ namespace SharpCrafting.Win32NT.Utilities
 
       return Task.CompletedTask;
     }
-  }
+
+    public static async Task ThrowUnsafeExceptionAsync ()
+    {
+        int    a = 0;
+        string b = null;
+
+        var ra = UnsafeLocalRef.Create(ref a);
+        var rb = UnsafeLocalRef.Create(ref b);
+
+        a = 1;
+        b = "abc";
+
+        Console.WriteLine(ra.CurrentValue);
+        Console.WriteLine(rb.CurrentValue);
+    }
+
+    public unsafe struct UnsafeLocalRef
+    {
+        private readonly void*             _ptr;
+        private readonly ReadValueDelegate _delegate;
+
+        public object CurrentValue => _delegate(_ptr);
+
+        private UnsafeLocalRef(void* ptr, ReadValueDelegate readDelegate)
+        {
+            _ptr      = ptr;
+            _delegate = readDelegate;
+        }
+
+        public static UnsafeLocalRef Create<T>(ref T local)
+        {
+            return new UnsafeLocalRef(Unsafe.AsPointer(ref local), ptr => Unsafe.Read<T>(ptr));
+        }
+
+        private delegate object ReadValueDelegate(void* ptr);
+    }
+    }
 }
